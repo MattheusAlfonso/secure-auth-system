@@ -2,16 +2,16 @@
 
 ---
 
-# 🔒 Sistema de Autenticación y Gestión Segura de Sesiones (PHP/HTML5)
+#  Sistema de Autenticación y Gestión Segura de Sesiones (PHP/HTML5)
 
 Un sistema de autenticación defensivo desarrollado en PHP y HTML5, diseñado para demostrar la gestión segura de sesiones, el almacenamiento hash de contraseñas y la mitigación de fallos de **Control de Acceso Inseguro** (OWASP A01:2021) y **Autenticación Defectuosa** (OWASP A07:2021).
 
 ![Dashboard Preview](preview.png)
 
-## 🎯 Propósito y Alcance
+##  Propósito y Alcance
 Este proyecto implementa un flujo seguro de acceso a un panel interno. Garantiza la protección de las credenciales de usuario mediante hashing y combate activamente los ataques de fijación de sesión y el acceso directo no autorizado mediante URL.
 
-## 🛡️ Funcionalidades de Seguridad Implementadas
+##  Funcionalidades de Seguridad Implementadas
 * **Hash Seguro de Contraseñas:** Uso de `password_hash()` con algoritmo bcrypt/Argon2id y verificación mediante `password_verify()`.
 * **Defensa contra Fijación de Sesión:** Ejecución de `session_regenerate_id(true)` tras una autenticación exitosa para renovar el identificador de sesión.
 * **Control de Acceso Estricto:** Bloqueo de accesos no autorizados a `dashboard.php` mediante la validación de `$_SESSION['authenticated']`.
