@@ -11,7 +11,7 @@ A robust, defense-in-depth authentication system built with PHP and HTML5, desig
 ##  Purpose & Scope
 This project implements a secure internal dashboard authentication workflow. It ensures that user credentials are protected in transit and at rest (memory/database simulation), while actively defeating session hijacking, fixation, and unauthorized direct URL traversal.
 
-## 🛡️ Security Features Implemented
+##  Security Features Implemented
 * **Secure Password Hashing:** Uses `password_hash()` with `PASSWORD_DEFAULT` (bcrypt/Argon2id algorithm) and `password_verify()` to prevent plain-text credential leaks or reverse lookup attacks.
 * **Session Fixation Defense:** Triggers `session_regenerate_id(true)` upon successful authentication to destroy the pre-login session ID and issue a new secure identifier.
 * **Broken Access Control Mitigation:** Restricts access to `dashboard.php` by strictly validating active `$_SESSION['authenticated']` flags. Unauthenticated requests are immediately rejected and redirected.
