@@ -124,3 +124,6 @@ code {
     padding: 2px 6px;
     border-radius: 4px;
 }
+.highlight { color: #38bdf8; }
+
+form .btn-danger { width: 100%; }
