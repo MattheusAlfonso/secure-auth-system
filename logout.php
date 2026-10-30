@@ -1,23 +1,17 @@
 <?php
+require_once 'security.php';
 
-session_start();
+send_security_headers();
+start_secure_session();
 
-$_SESSION = array();
-
-if (ini_get("session.use_cookies")) {
-    $params = session_get_cookie_params();
-    setcookie(
-        session_name(), 
-        '', 
-        time() - 42000,
-        $params["path"], 
-        $params["domain"],
-        $params["secure"], 
-        $params["httponly"]
-);
+// Logout só via POST com token CSRF: um link ou imagem em outro site
+// não consegue derrubar a sessão do usuário.
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !csrf_is_valid($_POST['csrf_token'] ?? null)) {
+    http_response_code(405);
+    exit('Use o botão "Encerrar Sessão Segura" no painel.');
 }
-session_destroy();
+
+destroy_session();
 
 header('Location: index.php?logged_out=1');
 exit();
-?>
